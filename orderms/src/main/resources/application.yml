@@ -1,0 +1,29 @@
+server:
+  port: 8084
+spring:
+#Asyc communication between services when using rabbitmq and cloud stream
+  rabbitmq:
+    #host: 192.168.99.100
+    host: localhost
+    port: 5672
+#Asyc communication between services when using cloud stream and rabbit mq
+  cloud:
+    stream:
+      bindings:
+        login-in:
+          destination: login
+          group: login
+  mvc:
+    view:
+      suffix: .html
+      prefix: /          
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+#custom property - to be put under config server
+jwt:
+ secret: javainuse
+ transaction-secret: tranSecret
